@@ -1,0 +1,122 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://UI.gd" type="Script" id=1]
+[ext_resource path="res://assets/gears_button/add_gear.png" type="Texture" id=2]
+[ext_resource path="res://ChangeGearButton.gd" type="Script" id=3]
+[ext_resource path="res://assets/gears_button/remove_gear.png" type="Texture" id=4]
+
+[node name="UI" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 1
+script = ExtResource( 1 )
+
+[node name="ControlsPanel" type="PanelContainer" parent="."]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_top = -143.0
+margin_right = 213.0
+
+[node name="VBox" type="VBoxContainer" parent="ControlsPanel"]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 206.0
+margin_bottom = 136.0
+
+[node name="StepControl" type="HBoxContainer" parent="ControlsPanel/VBox"]
+editor/display_folded = true
+margin_right = 199.0
+margin_bottom = 40.0
+
+[node name="StepButton" type="CheckButton" parent="ControlsPanel/VBox/StepControl"]
+margin_right = 76.0
+margin_bottom = 40.0
+
+[node name="StepLabel" type="Label" parent="ControlsPanel/VBox/StepControl"]
+margin_left = 80.0
+margin_top = 13.0
+margin_right = 159.0
+margin_bottom = 27.0
+text = "Step by Step"
+
+[node name="SolveButton" type="Button" parent="ControlsPanel/VBox"]
+margin_top = 44.0
+margin_right = 199.0
+margin_bottom = 84.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Solve Board"
+
+[node name="BoardControl" type="HBoxContainer" parent="ControlsPanel/VBox"]
+margin_top = 88.0
+margin_right = 199.0
+margin_bottom = 129.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="PrevBoardButton" type="Button" parent="ControlsPanel/VBox/BoardControl"]
+margin_right = 97.0
+margin_bottom = 41.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+disabled = true
+text = "Prev. Board"
+
+[node name="NextBoardButton" type="Button" parent="ControlsPanel/VBox/BoardControl"]
+margin_left = 101.0
+margin_right = 199.0
+margin_bottom = 41.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Next Board"
+
+[node name="GearManipulation" type="PanelContainer" parent="."]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -85.0
+margin_top = -84.0
+margin_right = 85.0
+
+[node name="HBox" type="HBoxContainer" parent="GearManipulation"]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 163.0
+margin_bottom = 77.0
+
+[node name="AddGearButton" type="Button" parent="GearManipulation/HBox"]
+margin_right = 76.0
+margin_bottom = 70.0
+icon = ExtResource( 2 )
+script = ExtResource( 3 )
+
+[node name="DeleteGearButton" type="Button" parent="GearManipulation/HBox"]
+margin_left = 80.0
+margin_right = 156.0
+margin_bottom = 70.0
+icon = ExtResource( 4 )
+script = ExtResource( 3 )
+type = "Remove"
+
+[node name="AuthorPanel" type="PanelContainer" parent="."]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -14.0
+margin_top = -28.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="AuhorLabel" type="Label" parent="AuthorPanel"]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 110.0
+margin_bottom = 21.0
+text = "By Luca Dreiling"
+
+[connection signal="toggled" from="ControlsPanel/VBox/StepControl/StepButton" to="." method="_on_StepButton_toggled"]
+[connection signal="pressed" from="ControlsPanel/VBox/SolveButton" to="." method="_on_SolveButton_pressed"]
+[connection signal="pressed" from="ControlsPanel/VBox/BoardControl/PrevBoardButton" to="." method="_on_PrevBoardButton_pressed"]
+[connection signal="pressed" from="ControlsPanel/VBox/BoardControl/NextBoardButton" to="." method="_on_NextBoardButton_pressed"]
