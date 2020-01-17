@@ -61,11 +61,12 @@ func calc_force(_gear_state, _force):
 
 
 func print_board():
-	var res = ""
+	var res = "\n"
 	for y in range(board.size()):
 		for x in range(board[0].size()):
 			res += board[y][x] + " "
-		res += "\n"
+		if y < board.size() - 1:
+			res += "\n"
 	print(res)
 
 
