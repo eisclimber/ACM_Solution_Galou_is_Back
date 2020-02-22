@@ -12,7 +12,6 @@ script = ExtResource( 1 )
 [node name="UILayer" type="CanvasLayer" parent="."]
 
 [node name="UI" parent="UILayer" instance=ExtResource( 3 )]
-
 [connection signal="board_clamped" from="." to="UILayer/UI" method="_on_Galou_board_clamped"]
 [connection signal="board_done" from="." to="UILayer/UI" method="_on_Galou_board_done"]
 [connection signal="resolve_available" from="." to="UILayer/UI" method="_on_Galou_resolve_available"]
